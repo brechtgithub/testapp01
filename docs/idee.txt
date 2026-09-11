@@ -1,0 +1,454 @@
+Du bist ein erfahrener UX/UI-Designer, PHP-/MySQL-Entwickler, CMS-Architekt und Content-Stratege.
+
+Erstelle die Website von YOUNG IMAGES e.V. vollständig neu auf Basis der bestehenden Website:
+
+https://youngimages.de/
+
+Das lokale Projekt im Repository soll analysiert und anschließend als eigenständige Website mit eigenem Backend umgesetzt werden.
+
+## Verbindliche technische Vorgaben
+
+- Kein WordPress.
+- Kein Elementor.
+- Kein fertiges CMS.
+- Eigenes Backend mit PHP und MySQL/MariaDB.
+- PHP 8.1 oder höher.
+- PDO mit Prepared Statements.
+- Sichere Sessions, Passwort-Hashing und CSRF-Schutz.
+- Bestehende Inhalte, Bilder und Daten zunächst sichern.
+- Keine Inhalte endgültig löschen, bevor sie geprüft und archiviert wurden.
+- Bestehende Änderungen im Repository respektieren.
+- Datenbankänderungen nachvollziehbar dokumentieren.
+- Das System muss für Netcup-Hosting geeignet sein.
+
+## Inhaltliche Grundlage
+
+Die aktuelle Website ist die primäre Inhaltsquelle:
+
+https://youngimages.de/
+
+Die bestehende Positionierung muss erhalten bleiben:
+
+Young Images e.V.
+Verein für Medien und Bildung
+
+Die Inhalte sollen nicht beliebig neu erfunden werden. Bestehende Texte, Bilder, Projekte und Links müssen analysiert, übernommen, redaktionell überarbeitet oder als veraltet markiert werden.
+
+## Neue Seitenstruktur
+
+### Hauptmenü
+
+Das Hauptmenü soll mindestens enthalten:
+
+1. Startseite
+2. Arbeitsfelder
+3. Projekte
+4. Team
+5. Förderer
+6. Partner / Experten
+7. Auszeichnungen
+8. Kontakt
+
+Zusätzlich können „Über uns“ und „Angebote“ sinnvoll integriert werden, sofern dies die Navigation verbessert.
+
+### Arbeitsfelder
+
+Die Arbeitsfelder sollen enthalten:
+
+- Filmbildung
+- Kulturelle Bildung
+- Medienkompetenz
+
+Zusätzlich sollen neue Arbeitsfelder vorbereitet beziehungsweise ergänzt werden:
+
+- Medienpädagogische Beratung
+- Inklusive Medienarbeit
+
+Zu jedem Arbeitsfeld gehören:
+
+- Titel
+- Kurzbeschreibung
+- ausführlicher Text
+- Zielgruppen
+- Methoden und Angebote
+- Bildmaterial
+- passende Projekte
+- Ansprechpartner
+- Veröffentlichungsstatus
+- Alt-Texte und Bildquellen
+
+Prüfe, ob die Bezeichnung „Medienkompetenz“ oder „Medien + Wissen“ verwendet werden soll. Die vorhandenen Inhalte der aktuellen Website müssen dabei berücksichtigt werden.
+
+### Startseite
+
+Die Startseite soll enthalten:
+
+- Young Images als Verein für Medien und Bildung
+- klare Einführung in die Arbeit des Vereins
+- Teaser für die Arbeitsfelder
+- Teaser für aktuelle Projekte
+- Portfolio- beziehungsweise Projektboxen
+- sichtbare Kontaktmöglichkeit
+- relevante Bilder
+- Verweise auf Archiv, Team, Partner und Förderer
+
+Die Startseitenboxen sollen redaktionell neu gefasst und mit passenden Bildern versehen werden.
+
+### Projekte
+
+Die Projektübersicht soll mindestens folgende Projekte berücksichtigen:
+
+Aktuelle oder zu prüfende Projekte:
+
+- Musikworkshop
+- MeMi
+- Mediensommer
+- Medien Know-How
+- Filme drehen
+- Talentcampus
+- Youth.Art.History
+- MekommInt
+- Medienkompetenz
+- MeSprInt
+- Mit Medien leben
+
+Externe beziehungsweise eigene Projektseiten:
+
+- Digitale Lauffeuer  
+  https://potzblitznews.youngimages.de/
+
+- Clips n’ Rap  
+  https://clipsnrap.youngimages.de/
+
+Weitere Inhalte:
+
+- Hinter den Kulissen / Filmworkshops Hamburg
+- Projektarchiv
+
+Jedes Projekt soll im Backend folgende Eigenschaften besitzen:
+
+- Titel
+- URL-Slug
+- Kurztext
+- ausführlicher Beschreibungstext
+- Arbeitsfeld
+- Kategorie
+- Zielgruppe
+- Jahr oder Zeitraum
+- Projektstatus
+- Titelbild
+- Bildergalerie
+- Vimeo-Link
+- YouTube-Link
+- externe Projektseite
+- beteiligte Partner
+- Ansprechpartner
+- Veröffentlichungsstatus
+- SEO-Titel
+- Meta-Beschreibung
+- Alt-Texte
+- Bildquellen und Copyright-Hinweise
+
+Mögliche Projektstatus:
+
+- aktuell
+- abgeschlossen
+- archiviert
+- Entwurf
+- prüfen
+- extern verlinkt
+- vom Netz nehmen
+
+Das Projektarchiv soll nach Jahr, Arbeitsfeld, Zielgruppe und Status filterbar sein. Neue Projekte müssen einfach angelegt und bestehende Projekte aktualisiert werden können.
+
+### Projektprüfung
+
+Für jedes bestehende Projekt soll eine redaktionelle Prüfliste vorhanden sein:
+
+- Inhalt aktuell?
+- Bildmaterial vorhanden?
+- Bildrechte geklärt?
+- Vimeo-Link gültig?
+- externe Website erreichbar?
+- Projekt noch relevant?
+- soll es archiviert werden?
+- soll es vom Netz genommen werden?
+- soll der Text neu geschrieben werden?
+- soll eine neue Box erstellt werden?
+
+Links, insbesondere Vimeo-Links, müssen geprüft werden. Veraltete oder nicht mehr gewünschte Links dürfen nicht automatisch gelöscht werden, sondern sollen zunächst im Backend als „prüfen“ oder „archiviert“ markiert werden.
+
+### Team
+
+Die Teamseite soll aktuelle Teammitglieder enthalten:
+
+- Kristin
+- Claudia
+- Andreas
+- Albrecht
+- Chantal
+- Susanne
+- Isabell
+- James
+- Jakob
+- Josefine
+
+Jedes Teammitglied soll besitzen:
+
+- Name
+- Rolle
+- Kurzbiografie
+- Foto
+- Sortierung
+- aktiv/inaktiv
+- Veröffentlichungsstatus
+- Bildquelle und Copyright
+
+Alte Teammitglieder sollen nicht sofort gelöscht werden. Das Backend soll eine Archivierung ermöglichen. Alte Boxen und Entwürfe können nach redaktioneller Prüfung dauerhaft gelöscht werden.
+
+### Förderer und Partner
+
+Förderer und Partner müssen künftig klar getrennt werden.
+
+#### Förderer
+
+Eigene Seite für:
+
+- Förderorganisationen
+- Stiftungen
+- öffentliche Förderer
+- Logos
+- Beschreibung
+- Website-Link
+- Förderzeitraum
+- Sortierung
+- Bildquelle und Copyright
+
+#### Partner / Experten
+
+Eigene Seite für:
+
+- Kooperationspartner
+- Bildungseinrichtungen
+- Kulturpartner
+- Experten
+- Einzelpersonen, zum Beispiel Boga
+- Logos oder Fotos
+- Beschreibung
+- Website-Link
+- Rolle beziehungsweise Zusammenarbeit
+- Sortierung
+- Veröffentlichungsstatus
+
+Die bestehende Liste der Kooperationspartner soll redaktionell überarbeitet werden.
+
+### Auszeichnungen
+
+Die Auszeichnungen sollen als Bildergalerie umgesetzt werden.
+
+Erforderlich:
+
+- Urkundenbild
+- Jahr
+- Titel
+- Beschreibung
+- Website-Link
+- Bildquelle
+- Veröffentlichungsstatus
+
+Die Darstellung muss chronologisch sortiert werden, neueste Auszeichnungen zuerst.
+
+### Kontakt
+
+Die Kontaktseite soll aktuelle Kontaktdaten, einen verständlichen Einführungstext und eine direkte Kontaktmöglichkeit enthalten.
+
+Optional beziehungsweise bevorzugt:
+
+- Kontaktformular
+- Name
+- Organisation
+- E-Mail
+- Anliegen
+- Nachricht
+- Datenschutz-Zustimmung
+- Spam-Schutz
+- serverseitige Validierung
+
+## Footer und Untermenü
+
+Der Footer soll enthalten:
+
+- Datenschutzerklärung
+- Impressum
+- Kontakt
+- Social-Media-Links
+- Copyright
+- gegebenenfalls Projektarchiv
+- gegebenenfalls Förderer und Partner
+
+Social-Media-Links:
+
+- Facebook
+- Vimeo
+- Instagram
+- YouTube
+
+Folgende Punkte müssen geprüft werden:
+
+- Vimeo-Link aktualisieren
+- veraltete Vimeo-Videos entfernen oder archivieren
+- fehlende Clips-n-Rap-Videos ergänzen
+- prüfen, ob ein YouTube-Kanal eingerichtet werden soll
+- alle externen Links auf Erreichbarkeit prüfen
+
+## Datenschutz und Rechtliches
+
+Die Datenschutzerklärung muss auf aktuelle rechtliche Anforderungen geprüft und redaktionell überarbeitet werden.
+
+Prüfe insbesondere:
+
+- externe Videos
+- Vimeo
+- YouTube
+- externe Schriftarten
+- Cookies
+- Tracking
+- Kontaktformular
+- Einwilligungen
+- Widerruf von Einwilligungen
+- Speicherung von Formulardaten
+- Datenschutzerklärung
+- Impressum
+
+Ein Cookie- beziehungsweise Datenschutzsystem soll nur eingebunden werden, wenn es für die tatsächlich verwendeten Dienste erforderlich ist.
+
+## Ziele und Vereinsprofil
+
+Der Bereich „Ziele“ muss redaktionell überarbeitet werden.
+
+Dabei sollen berücksichtigt werden:
+
+- Medienbildung
+- Filmbildung
+- kulturelle Teilhabe
+- inklusive Medienarbeit
+- Beratung und Begleitung
+- Arbeit mit Kindern und Jugendlichen
+- Jugendhilfe
+- Kinder- und Jugendhilfe als Förderzweck
+- Anerkennung als Jugendhilfeträger, sofern rechtlich und sachlich zutreffend
+- gesellschaftliche Wirkung
+- Teilhabe
+- Eigeninitiative
+- kritisches Denken
+- praktische Medienarbeit
+
+Die Formulierung zur Anerkennung als Jugendhilfeträger darf nicht als Tatsache veröffentlicht werden, bevor sie fachlich und rechtlich bestätigt wurde. Bis dahin muss sie als redaktioneller Prüfpunkt behandelt werden.
+
+## Layout und Boxen
+
+Analysiere alle bestehenden Portfolio- und Inhaltsboxen.
+
+Folgende Aufgaben sind vorgesehen:
+
+- alte Boxen prüfen
+- doppelte Boxen entfernen
+- veraltete Boxen archivieren
+- Entwurfsboxen prüfen
+- endgültig nicht benötigte Boxen löschen
+- Texte der Boxen neu formulieren
+- passende Bilder ergänzen
+- Bildquellen dokumentieren
+- Boxen für neue Arbeitsfelder ergänzen
+- Boxen für aktuelle Projekte ergänzen
+
+Das Layout soll nicht wie ein Standard-WordPress-Theme wirken. Es soll eigenständig, klar, bildstark und passend zu einer Medienbildungsorganisation sein.
+
+## Backend-Funktionen
+
+Das eigene Backend muss enthalten:
+
+- Login
+- sichere Logout-Funktion
+- Dashboard
+- Seitenverwaltung
+- Arbeitsfeldverwaltung
+- Projektverwaltung
+- Projektarchiv
+- Teamverwaltung
+- Fördererverwaltung
+- Partner-/Expertenverwaltung
+- Auszeichnungsverwaltung
+- Medienbibliothek
+- Einstellungen
+- Social-Media-Verwaltung
+- SEO-Felder
+- Veröffentlichungsstatus
+- Entwürfe
+- Archivierung
+- Vorschau
+- Sortierung
+- Suche
+- Filter
+- Änderungs- und Prüflisten
+- Bildquellen und Copyright-Felder
+- sichere Uploads
+- Bildauswahl statt manueller Pfadeingabe
+
+Für jede Inhaltsart müssen die Redakteure Inhalte erstellen, bearbeiten, archivieren und veröffentlichen können.
+
+## Datenmigration
+
+Vor der Umsetzung:
+
+1. Inhalte der aktuellen Website erfassen.
+2. Bestehende Seiten und Projekte katalogisieren.
+3. Bilder und Bildquellen erfassen.
+4. Vimeo- und externe Links prüfen.
+5. Inhalte in aktuell, archiviert, veraltet und offen prüfen einteilen.
+6. Alte URLs dokumentieren.
+7. Weiterleitungen planen.
+8. Erst danach Inhalte in das neue System übernehmen.
+
+Keine alten Inhalte automatisch löschen.
+
+## Qualitätssicherung
+
+Teste mindestens:
+
+- Desktop
+- Tablet
+- Smartphone
+- Navigation
+- mobile Navigation
+- Login
+- Logout
+- Rechteprüfung
+- Uploads
+- Bildauswahl
+- Projektarchiv
+- Filter
+- Formulare
+- CSRF-Schutz
+- Eingabevalidierung
+- SEO-Metadaten
+- externe Links
+- Vimeo-Links
+- Datenschutz
+- Impressum
+- Alt-Texte
+- Tastaturbedienbarkeit
+- Ladezeiten
+- HTTPS und Mixed Content
+
+Erstelle zum Abschluss:
+
+- eine Liste übernommener Inhalte
+- eine Liste archivierter Inhalte
+- eine Liste noch zu prüfender Inhalte
+- eine Liste fehlender Bilder
+- eine Liste nicht funktionierender Links
+- eine Liste redaktioneller Entscheidungen
+- eine Installationsanleitung
+- eine Anleitung für Redakteure
+- eine Übersicht der Datenbankänderungen

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Young Images – Netcup-Setup-Anleitung</title>
+  <style>
+    :root { --ink:#172338; --blue:#155eef; --pale:#eef4ff; --line:#d8e0ec; --ok:#087443; --warn:#9a5b00; }
+    * { box-sizing:border-box; }
+    body { margin:0; font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink); background:#f6f8fb; }
+    main { max-width:920px; margin:42px auto; padding:0 24px 48px; }
+    header { padding:34px; color:white; background:linear-gradient(125deg,#10203c,#155eef); border-radius:18px; }
+    h1 { margin:0 0 8px; font-size:clamp(1.8rem,4vw,2.7rem); line-height:1.15; }
+    h2 { margin:38px 0 12px; font-size:1.4rem; }
+    h3 { margin:24px 0 8px; font-size:1.08rem; }
+    section { background:white; border:1px solid var(--line); border-radius:14px; padding:26px 30px; margin-top:20px; }
+    p { margin:8px 0; }
+    ol,ul { padding-left:24px; }
+    li { margin:8px 0; }
+    code,pre { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+    code { padding:2px 5px; background:#edf1f7; border-radius:4px; }
+    pre { overflow:auto; margin:14px 0; padding:16px; color:#eaf1ff; background:#10203c; border-radius:9px; line-height:1.45; }
+    .note { padding:14px 16px; margin:16px 0; border-left:4px solid var(--blue); background:var(--pale); border-radius:6px; }
+    .warning { border-color:#e79a11; background:#fff7e7; }
+    .ok { border-color:#24a56b; background:#edf9f2; }
+    .steps { counter-reset:step; list-style:none; padding:0; }
+    .steps > li { position:relative; padding-left:42px; margin:18px 0; }
+    .steps > li::before { counter-increment:step; content:counter(step); position:absolute; left:0; top:0; display:grid; place-items:center; width:27px; height:27px; color:white; font-weight:700; background:var(--blue); border-radius:50%; }
+    table { width:100%; border-collapse:collapse; margin:14px 0; }
+    th,td { padding:10px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; }
+    th { background:#f6f8fb; }
+    @media print { body { background:white; } main { max-width:none; margin:0; } section { break-inside:avoid; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Young Images bei Netcup einrichten</h1>
+    <p>Git-Deployment, MySQL/MariaDB und CMS-Setup – Schritt für Schritt.</p>
+  </header>
+
+  <section>
+    <h2>Vor dem Start</h2>
+    <ul>
+      <li>Das GitHub-Repository lautet <code>brechtgithub/testapp01</code>; der aktuelle Branch heißt <code>main</code>.</li>
+      <li>Bei Netcup existiert bereits eine MySQL-/MariaDB-Datenbank.</li>
+      <li>Die Datenbank-Zugangsdaten gehören ausschließlich in die Datei <code>.env</code>. Sie dürfen weder nach GitHub hochgeladen noch im Chat geteilt werden.</li>
+      <li>Das Projekt benötigt PHP 8.1 oder neuer und die Erweiterung <code>pdo_mysql</code>.</li>
+    </ul>
+    <div class="note warning"><strong>Wichtig:</strong> Die lokale <code>.env</code> ist absichtlich von Git ausgeschlossen. Sie wird beim Git-Deployment nicht auf Netcup übertragen und muss dort manuell erstellt werden.</div>
+  </section>
+
+  <section>
+    <h2>1. GitHub-Repository in Netcup verbinden</h2>
+    <ol class="steps">
+      <li>Bei Netcup im Customer Control Panel anmelden.</li>
+      <li>Unter <strong>Produkte</strong> das Webhosting-Paket auswählen und das <strong>Webhosting Control Panel</strong> öffnen.</li>
+      <li>Die Domain <code>youngimages.movez.de</code> auswählen und den Bereich <strong>Git</strong> öffnen.</li>
+      <li><strong>Repository hinzufügen</strong> wählen.</li>
+      <li>Als Remote-URL ausschließlich Folgendes eintragen:
+        <pre>https://github.com/brechtgithub/testapp01.git</pre>
+        Keine eckigen Klammern, keinen Markdown-Link und kein <code>movez.de@</code> verwenden.
+      </li>
+      <li>Den Branch <code>main</code> auswählen und das Repository hinzufügen.</li>
+      <li>Als Deployment-Ziel den Ordner wählen, aus dem die URL <code>/youngimages2026/</code> ausgeliefert wird. Dort müssen danach <code>config.php</code>, <code>index.php</code> und der Ordner <code>admin</code> liegen.</li>
+      <li><strong>Deploy / Bereitstellen</strong> klicken. Optional die automatische Bereitstellung bei neuen Commits aktivieren.</li>
+    </ol>
+    <div class="note">Falls das Repository privat ist, wird ein GitHub Personal Access Token mit Zugriff <strong>Contents: Read-only</strong> auf genau dieses Repository benötigt. Bei einem öffentlichen Repository ist kein Token notwendig.</div>
+  </section>
+
+  <section>
+    <h2>2. Datenbank-Zugangsdaten auf Netcup hinterlegen</h2>
+    <ol class="steps">
+      <li>Im Webhosting-Control-Panel den <strong>Dateimanager</strong> öffnen.</li>
+      <li>Zum Deployment-Ordner wechseln, also zum Ordner mit <code>config.php</code>.</li>
+      <li>Eine neue Datei namens <code>.env</code> erstellen. Falls der Dateimanager Dateien mit führendem Punkt nicht direkt anlegen kann: zunächst <code>env.txt</code> anlegen und danach in <code>.env</code> umbenennen.</li>
+      <li>Die Werte aus den Netcup-Datenbankdetails eintragen:</li>
+    </ol>
+    <pre>DB_HOST=DEIN_DATENBANK_HOST
+DB_PORT=3306
+DB_NAME=DEIN_DATENBANKNAME
+DB_USER=DEIN_DATENBANKBENUTZER
+DB_PASSWORD=DEIN_DATENBANKPASSWORT
+DB_CHARSET=utf8mb4</pre>
+    <div class="note warning"><strong>Sicherheitsregel:</strong> Platzhalter ersetzen, aber diese Datei nicht committen. Der Webserver muss sie lesen dürfen; öffentlich abrufbar ist sie durch die Projektkonfiguration gesperrt.</div>
+  </section>
+
+  <section>
+    <h2>3. Datenbanktabellen anlegen</h2>
+    <p>Es gibt zwei gleichwertige Wege. Weg A ist der übersichtlichste.</p>
+    <h3>Weg A: SQL-Datei mit phpMyAdmin importieren</h3>
+    <ol class="steps">
+      <li>Im Netcup-Control-Panel die Datenbankverwaltung bzw. phpMyAdmin öffnen.</li>
+      <li>Die bereits angelegte Young-Images-Datenbank auswählen.</li>
+      <li>Den Menüpunkt <strong>Importieren</strong> öffnen.</li>
+      <li>Diese Projektdatei auswählen: <code>database/youngimages_schema.sql</code>.</li>
+      <li>Import starten. Danach müssen zehn Tabellen vorhanden sein, darunter <code>admins</code>, <code>settings</code>, <code>pages</code> und <code>projects</code>.</li>
+    </ol>
+    <h3>Weg B: automatisch durch das Setup</h3>
+    <p>Wenn <code>.env</code> korrekt eingerichtet ist, legt der erste Aufruf von <code>admin/setup.php</code> die Tabellen automatisch an. Ein vorheriger SQL-Import ist dann nicht nötig.</p>
+  </section>
+
+  <section>
+    <h2>4. PHP-Version und CMS einrichten</h2>
+    <ol class="steps">
+      <li>In Plesk für die Domain die <strong>PHP-Einstellungen</strong> öffnen und PHP 8.1, 8.2, 8.3 oder 8.4 wählen.</li>
+      <li>Im Browser die Setup-Adresse öffnen:
+        <pre>https://youngimages.movez.de/youngimages2026/admin/setup.php</pre>
+      </li>
+      <li>Einen Admin-Benutzernamen und ein sicheres Passwort mit mindestens zehn Zeichen anlegen.</li>
+      <li>Anschließend über <code>/youngimages2026/admin/login.php</code> anmelden.</li>
+      <li>Nach dem ersten Admin-Login die Datei <code>admin/setup.php</code> auf dem Server löschen oder per Zugriffsschutz sperren.</li>
+    </ol>
+    <div class="note ok"><strong>Erfolgskontrolle:</strong> Im Adminbereich sollten Seiten, Arbeitsfelder, Projekte, Team, Förderer und weitere Beispielinhalte sichtbar sein.</div>
+  </section>
+
+  <section>
+    <h2>Fehlerbehebung bei „500 Internal Server Error“</h2>
+    <table>
+      <thead><tr><th>Prüfung</th><th>Lösung</th></tr></thead>
+      <tbody>
+        <tr><td><code>.env</code> fehlt oder liegt im falschen Ordner</td><td>Die Datei muss direkt neben <code>config.php</code> liegen und Werte für <code>DB_NAME</code> sowie <code>DB_USER</code> enthalten.</td></tr>
+        <tr><td>Falscher Datenbank-Host oder falsches Passwort</td><td>Datenbankdetails im Netcup-Control-Panel mit der <code>.env</code> vergleichen. Passwort nie in Fehlermeldungen oder Chats posten.</td></tr>
+        <tr><td>PHP-Version ist zu alt</td><td>In den PHP-Einstellungen mindestens PHP 8.1 auswählen.</td></tr>
+        <tr><td><code>could not find driver</code></td><td>PHP-Erweiterung <code>pdo_mysql</code> aktivieren bzw. Netcup-Support kontaktieren.</td></tr>
+        <tr><td><code>Access denied</code></td><td>Datenbankname, Benutzer und Passwort prüfen; der Datenbankbenutzer braucht Rechte auf diese Datenbank.</td></tr>
+        <tr><td><code>Connection refused</code> oder Timeout</td><td>Den von Netcup angegebenen Datenbank-Host verwenden, nicht zwingend <code>localhost</code>.</td></tr>
+      </tbody>
+    </table>
+    <p>Für die genaue Ursache in Plesk den Bereich <strong>Logs / Protokolle</strong> der Domain öffnen und die jüngste PHP-Fehlermeldung prüfen. Zugangsdaten vor dem Teilen entfernen.</p>
+  </section>
+</main>
+</body>
+</html>
