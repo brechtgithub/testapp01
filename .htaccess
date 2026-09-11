@@ -3,6 +3,7 @@ Options -Indexes
 RewriteEngine On
 RewriteRule ^data/ - [F,L]
 RewriteRule ^config\.php$ - [F,L]
+RewriteRule ^\.env$ - [F,L]
 RewriteRule ^functions\.php$ - [F,L]
 RewriteRule ^README\.txt$ - [F,L]
 </IfModule>

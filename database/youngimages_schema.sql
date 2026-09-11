@@ -1,0 +1,122 @@
+-- Young Images CMS – MySQL/MariaDB schema
+-- Import this file into the already-created Netcup database.
+-- Character set: UTF-8 (utf8mb4)
+
+SET NAMES utf8mb4;
+SET time_zone = '+00:00';
+
+CREATE TABLE IF NOT EXISTS admins (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(190) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at VARCHAR(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS settings (
+  id TINYINT UNSIGNED PRIMARY KEY,
+  site_title VARCHAR(255),
+  intro TEXT,
+  phone VARCHAR(100),
+  email VARCHAR(255),
+  address TEXT,
+  facebook VARCHAR(255),
+  instagram VARCHAR(255),
+  vimeo VARCHAR(255),
+  youtube VARCHAR(255),
+  impressum TEXT,
+  privacy TEXT,
+  logo VARCHAR(500),
+  hero_image VARCHAR(500)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS pages (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(190) UNIQUE NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  eyebrow VARCHAR(255),
+  intro TEXT,
+  body LONGTEXT,
+  image VARCHAR(500),
+  published TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS fields (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  short_text TEXT,
+  body LONGTEXT,
+  image VARCHAR(500),
+  accent VARCHAR(30) DEFAULT 'orange',
+  published TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS projects (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  category VARCHAR(255),
+  year VARCHAR(20),
+  short_text TEXT,
+  body LONGTEXT,
+  image VARCHAR(500),
+  video_url VARCHAR(500),
+  status VARCHAR(30) DEFAULT 'aktuell',
+  published TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS offers (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  category VARCHAR(255),
+  target VARCHAR(255),
+  duration VARCHAR(255),
+  short_text TEXT,
+  body LONGTEXT,
+  image VARCHAR(500),
+  contact VARCHAR(255),
+  published TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS team (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  role VARCHAR(255),
+  bio LONGTEXT,
+  image VARCHAR(500),
+  published TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS funders (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  logo VARCHAR(500),
+  url VARCHAR(500),
+  published TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS partners (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  logo VARCHAR(500),
+  url VARCHAR(500),
+  published TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS awards (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  year VARCHAR(20) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  image VARCHAR(500),
+  url VARCHAR(500),
+  published TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
